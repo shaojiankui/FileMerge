@@ -20,7 +20,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _files = [NSMutableArray array];
     FileDragView *dragView = self.window.contentView;
-    
+    [self.tableView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
+
     __weak typeof(self) weakSelf = self;
     
     [dragView didDragEndBlock:^(NSArray *result) {
@@ -67,36 +68,27 @@
 //                   inTableColumn: tableColumn];
 //    
 //    [tableView reloadData];
-    
+    [_files sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
     
 //    
 }
-- (NSDragOperation) tableView: (NSTableView *) view
-                 validateDrop: (id ) info
-                  proposedRow: (int) row
-        proposedDropOperation: (NSTableViewDropOperation) op
-{
-    [view setDropRow: row
-       dropOperation: op];
-    
-    NSDragOperation dragOp = NSDragOperationCopy;
-    
-    return (dragOp);
-    
-}
 
 - (IBAction)mergeTouched:(id)sender {
+    NSString *ext = [[_files firstObject] pathExtension];
     NSSavePanel*    panel = [NSSavePanel savePanel];
-    [panel setNameFieldStringValue:@"Untitle"];
+    [panel setNameFieldStringValue:[@"Untitle" stringByAppendingPathExtension:ext?:@""]];
     [panel setMessage:@"Choose the path to save the document"];
     [panel setAllowsOtherFileTypes:YES];
 //    [panel setAllowedFileTypes:@[@"onecodego"]];
-    [panel setExtensionHidden:YES];
+    [panel setExtensionHidden:NO];
     [panel setCanCreateDirectories:YES];
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton)
         {
             NSString *path = [[panel URL] path];
+            [panel close];
             [self mergeFiles:path];
         }
         
@@ -104,8 +96,30 @@
 }
 -(void)mergeFiles:(NSString*)savePath{
 //    Jakey-Pro:Downloads jakey$ cat x0019in109q.p209.* > x0019in109q.mp4
+    
+    
+    [self merge:savePath files:_files];
+    
+}
 
+-(void)merge:(NSString *)destination files:(NSArray *)files {
+    [[NSFileManager defaultManager] createFileAtPath:destination contents:nil attributes:nil];
 
+    NSFileHandle *writerHandle = [NSFileHandle fileHandleForWritingAtPath:destination];
+    [writerHandle seekToFileOffset:0];
+    unsigned long long chunkSize = 50*1024*1024;
+    
+    for (NSString *file in files) {
+        NSFileHandle *readerHandle = [NSFileHandle fileHandleForReadingAtPath:file];
+        NSData *data =  [readerHandle readDataOfLength:chunkSize];
+        NSLog(@"merging file:%@",[file lastPathComponent]);
+        while ([data length]>0) {
+            [writerHandle writeData:data];
+            data = [readerHandle readDataOfLength:chunkSize];
+        }
+        [readerHandle closeFile];
+    }
+    [writerHandle closeFile];
 }
 
 - (IBAction)resetTouched:(id)sender {

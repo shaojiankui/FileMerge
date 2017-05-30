@@ -684,26 +684,26 @@
         <window title="FileMerge" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="670" height="370"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ" customClass="FileDragView">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="670" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuW-09-Af8">
-                        <rect key="frame" x="0.0" y="44" width="480" height="316"/>
+                        <rect key="frame" x="0.0" y="44" width="670" height="326"/>
                         <clipView key="contentView" id="HZu-6e-J4x">
-                            <rect key="frame" x="1" y="0.0" width="478" height="315"/>
+                            <rect key="frame" x="1" y="0.0" width="668" height="325"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="Get-2A-uhV" id="8bJ-IC-AfT">
-                                    <rect key="frame" x="0.0" y="0.0" width="478" height="292"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="668" height="302"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="name" width="116" minWidth="40" maxWidth="1000" id="WNK-Q8-LuQ">
+                                        <tableColumn identifier="name" width="242.5" minWidth="40" maxWidth="1000" id="WNK-Q8-LuQ">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="文件名">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -716,7 +716,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn identifier="path" width="356" minWidth="40" maxWidth="1000" id="ib1-Uh-X7k">
+                                        <tableColumn identifier="path" width="419.5" minWidth="40" maxWidth="1000" id="ib1-Uh-X7k">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="文件路径">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -738,7 +738,7 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="plx-NM-UC0">
-                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                            <rect key="frame" x="1" y="309" width="668" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="trg-Do-pOi">
@@ -746,12 +746,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="Get-2A-uhV">
-                            <rect key="frame" x="0.0" y="0.0" width="478" height="23"/>
+                            <rect key="frame" x="0.0" y="0.0" width="668" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b65-dF-rTe">
-                        <rect key="frame" x="4" y="3" width="67" height="32"/>
+                        <rect key="frame" x="4" y="13" width="67" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="重置" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hU1-Uy-Fa9">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -762,7 +762,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-K8-70X">
-                        <rect key="frame" x="91" y="3" width="79" height="32"/>
+                        <rect key="frame" x="91" y="13" width="79" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="merge" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k41-Yu-qsK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -780,7 +780,7 @@
                     <constraint firstAttribute="trailing" secondItem="ZuW-09-Af8" secondAttribute="trailing" id="yvL-wQ-dRP"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="432" y="-134"/>
+            <point key="canvasLocation" x="268" y="-194"/>
         </window>
     </objects>
 </document>
